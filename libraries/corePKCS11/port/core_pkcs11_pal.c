@@ -404,7 +404,6 @@ CK_RV PKCS11_PAL_GetObjectValue( CK_OBJECT_HANDLE xHandle,
             ulReturn = CKR_HOST_MEMORY;
             goto done;
         }
-        *ppucData = data;
 
         err = nvs_get_blob(handle, pcFileName, data, &required_size);
         if (err != ESP_OK) {
@@ -414,6 +413,7 @@ CK_RV PKCS11_PAL_GetObjectValue( CK_OBJECT_HANDLE xHandle,
             goto done;
         }
 
+        *ppucData = data;
         *pulDataSize = required_size;
 done:
         nvs_close(handle);
