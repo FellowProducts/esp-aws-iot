@@ -235,6 +235,7 @@ CK_OBJECT_HANDLE PKCS11_PAL_SaveObject( CK_ATTRIBUTE_PTR pxLabel,
         return eInvalidHandle;
     }
 
+    nvs_commit(handle);
     nvs_close(handle);
     return xHandle;
 }
